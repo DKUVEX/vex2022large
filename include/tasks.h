@@ -24,9 +24,11 @@ void index(float speed){
 
 void kick(int ktime){
   for(int i=0;i<ktime;i++){
-    sol.set(1);
+    // sol.set(1);
+    index(1000);
     vexDelay(100);
-    sol.set(0);
+    index(1000);
+    // sol.set(0);
     vexDelay(220);
   }  
 }
@@ -154,8 +156,8 @@ int flywheelContorl(){
       }
       case fw_HSPD:{
         fwTargetSpeed = 2775; //2775
-
-        ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+5);
+        cout<<fwSpeed<<endl;
+        ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+45);
         if(ifFwPID && fwSpeed < (fwTargetSpeed-30)) ifFwPID = false;
         else if(!ifFwPID && fwSpeed > (fwTargetSpeed-2)) ifFwPID = true;
         fwVolt = ifFwPID?((90)+(fwTargetSpeed-fwSpeed)*0.15):100;
@@ -209,6 +211,8 @@ int launch(){
     if(kCount < 0) kCount = 0;
     lastL1 = L1;
     vexDelay(10);
+    // cout<<"kcount "<<kCount<<endl;
+
   }
   return 0;
 }
