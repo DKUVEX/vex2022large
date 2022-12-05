@@ -24,7 +24,8 @@ void usercontrol(void) {
     if(fwState == fw_LSPD && kCount > 0) {
       // kick(1);
       // cout<<"kcount "<<kCount<<endl;
-      index(100);
+      index(120);
+      intake(100);
       vexDelay(100);
       if (kCount == 1)
       {
@@ -33,8 +34,9 @@ void usercontrol(void) {
       }
     }
     else if(fwState == fw_HSPD && ifSpeedOK && kCount > 0){
-      cout<<"kcount "<<kCount<<endl;
-      index(100);
+      // cout<<"kcount "<<kCount<<endl;
+      index(120);
+      intake(100);
       vexDelay(100);
       if (kCount == 1)
       {
@@ -45,7 +47,7 @@ void usercontrol(void) {
     }
     intake(100*(R2-R1)*!L2);
     // cout<<R2<<" "<<R1<<endl;
-
+    roller(100*BY);
     lastL1 = L1;
     // cout<<Hor.rotation(deg)<<"  "<<Ver.rotation(deg)<<endl;
     //printScreen(10,140,"x:%.2f y:%.2f v4gyro:%.2f v5gyro:%.2f",omniPos[0], omniPos[1], -v4gyro.rotation(),-Gyro.rotation());
