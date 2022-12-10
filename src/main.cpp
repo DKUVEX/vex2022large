@@ -25,27 +25,29 @@ void usercontrol(void) {
       // kick(1);
       // cout<<"kcount "<<kCount<<endl;
       index(120);
-      intake(100);
+      intake(-100);
       vexDelay(100);
       if (kCount == 1)
       {
         kCount -= 1;
         index(0);
+        intake(0);
       }
     }
     else if(fwState == fw_HSPD && ifSpeedOK && kCount > 0){
       // cout<<"kcount "<<kCount<<endl;
       index(120);
-      intake(100);
+      intake(-100);
       vexDelay(100);
       if (kCount == 1)
       {
         kCount -= 1;
         index(0);
+        intake(0);
       }
       // kick(1);
     }
-    intake(100*(R2-R1)*!L2);
+    intake(-100*(R2-R1)*!L2);
     // cout<<R2<<" "<<R1<<endl;
     roller(100*BY);
     lastL1 = L1;
