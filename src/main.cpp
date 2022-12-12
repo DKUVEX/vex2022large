@@ -9,7 +9,7 @@ void autonomous(void) {
   //oneminute310p();
   // drift(50, 0, 1, 0.8);
   // drift(-100, 0, 1, 0.8);
-  rot_rig(500);
+  mov_fwd(1000);
 }
 
 void usercontrol(void) {
