@@ -34,7 +34,74 @@ void kick(int ktime){
     vexDelay(220);
   }  
 }
-
+void mov_fwd(int time)
+{
+  LA.spin(fwd, 10000, voltageUnits::mV);
+  LB.spin(fwd, 10000, voltageUnits::mV);
+  RA.spin(fwd, -10000, voltageUnits::mV);
+  RB.spin(fwd, -10000, voltageUnits::mV);  
+  delay(time);
+  LA.spin(fwd, -1000, voltageUnits::mV);
+  LB.spin(fwd, -1000, voltageUnits::mV);
+  RA.spin(fwd, 1000, voltageUnits::mV);
+  RB.spin(fwd, 1000, voltageUnits::mV);  
+  delay(100);
+  LA.spin(fwd, 0, voltageUnits::mV);
+  LB.spin(fwd, 0, voltageUnits::mV);
+  RA.spin(fwd, 0, voltageUnits::mV);
+  RB.spin(fwd, 0, voltageUnits::mV);  
+}
+void mov_bwd(int time)
+{
+  LA.spin(fwd, -10000, voltageUnits::mV);
+  LB.spin(fwd, -10000, voltageUnits::mV);
+  RA.spin(fwd, 10000, voltageUnits::mV);
+  RB.spin(fwd, 10000, voltageUnits::mV);  
+  delay(time);
+  LA.spin(fwd, 1000, voltageUnits::mV);
+  LB.spin(fwd, 1000, voltageUnits::mV);
+  RA.spin(fwd, -1000, voltageUnits::mV);
+  RB.spin(fwd, -1000, voltageUnits::mV);  
+  delay(100);
+  LA.spin(fwd, 0, voltageUnits::mV);
+  LB.spin(fwd, 0, voltageUnits::mV);
+  RA.spin(fwd, 0, voltageUnits::mV);
+  RB.spin(fwd, 0, voltageUnits::mV);  
+}
+void rot_lef(int time)
+{
+  LA.spin(fwd, -10000, voltageUnits::mV);
+  LB.spin(fwd, -10000, voltageUnits::mV);
+  RA.spin(fwd, -10000, voltageUnits::mV);
+  RB.spin(fwd, -10000, voltageUnits::mV);  
+  delay(time);
+  LA.spin(fwd, 1000, voltageUnits::mV);
+  LB.spin(fwd, 1000, voltageUnits::mV);
+  RA.spin(fwd, 1000, voltageUnits::mV);
+  RB.spin(fwd, 1000, voltageUnits::mV);  
+  delay(100);
+  LA.spin(fwd, 0, voltageUnits::mV);
+  LB.spin(fwd, 0, voltageUnits::mV);
+  RA.spin(fwd, 0, voltageUnits::mV);
+  RB.spin(fwd, 0, voltageUnits::mV);  
+}
+void rot_rig(int time)
+{
+  LA.spin(fwd, 10000, voltageUnits::mV);
+  LB.spin(fwd, 10000, voltageUnits::mV);
+  RA.spin(fwd, 10000, voltageUnits::mV);
+  RB.spin(fwd, 10000, voltageUnits::mV);  
+  delay(time);
+  LA.spin(fwd, -1000, voltageUnits::mV);
+  LB.spin(fwd, -1000, voltageUnits::mV);
+  RA.spin(fwd, -1000, voltageUnits::mV);
+  RB.spin(fwd, -1000, voltageUnits::mV);  
+  delay(100);
+  LA.spin(fwd, 0, voltageUnits::mV);
+  LB.spin(fwd, 0, voltageUnits::mV);
+  RA.spin(fwd, 0, voltageUnits::mV);
+  RB.spin(fwd, 0, voltageUnits::mV);  
+}
 int base(){
   bool lastBX = false;
   

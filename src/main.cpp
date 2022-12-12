@@ -7,8 +7,9 @@ void autonomous(void) {
   chState = ctrl_AUTONOMOUS;
   //runAuton();
   //oneminute310p();
-  drift(50, 0, 1, 0.8);
-  drift(-100, 0, 1, 0.8);
+  // drift(50, 0, 1, 0.8);
+  // drift(-100, 0, 1, 0.8);
+  rot_rig(500);
 }
 
 void usercontrol(void) {
