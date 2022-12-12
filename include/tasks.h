@@ -241,7 +241,7 @@ int flywheelContorl(){
       }
       case fw_LSPD:{
         //2350
-        fwTargetSpeed = 2135; //2135 
+        fwTargetSpeed = 2000; //2000 
 
         ifSpeedOK = fwSpeed > (fwTargetSpeed-150) && fwSpeed < (fwTargetSpeed+50);
         if(ifFwPID && fwSpeed < (fwTargetSpeed-50)) ifFwPID = false;
@@ -253,7 +253,7 @@ int flywheelContorl(){
         break;
       }
       case fw_HSPD:{
-        fwTargetSpeed = 2775; //2775
+        fwTargetSpeed = 2500; //2500
         cout<<fwSpeed<<endl;
         ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+45);
         if(ifFwPID && fwSpeed < (fwTargetSpeed-30)) ifFwPID = false;
