@@ -24,6 +24,9 @@ void index(float speed){
 void roller(float speed){
   rol.spin(fwd, 120*speed, voltageUnits::mV);
 }
+void extend(float speed){
+  ext.spin(fwd, 120*speed, voltageUnits::mV);
+}
 void kick(int ktime){
   for(int i=0;i<ktime;i++){
     // sol.set(1);
@@ -34,45 +37,46 @@ void kick(int ktime){
     vexDelay(220);
   }  
 }
+int speed_factor = 5;
 void mov_fwd(int time)
 {
   if (time>=200) 
   {
     for (int i=0;i<=100;i++)
     {
-      LA.spin(fwd, 100*i, voltageUnits::mV);
-      LB.spin(fwd, 100*i, voltageUnits::mV);
-      RA.spin(fwd, -100*i, voltageUnits::mV);
-      RB.spin(fwd, -100*i, voltageUnits::mV); 
+      LA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, -speed_factor*10*i, voltageUnits::mV); 
     }
-    LA.spin(fwd, 10000, voltageUnits::mV);
-    LB.spin(fwd, 10000, voltageUnits::mV);
-    RA.spin(fwd, -10000, voltageUnits::mV);
-    RB.spin(fwd, -10000, voltageUnits::mV);  
+    LA.spin(fwd, speed_factor*1000, voltageUnits::mV);
+    LB.spin(fwd, speed_factor*1000, voltageUnits::mV);
+    RA.spin(fwd, -speed_factor*1000, voltageUnits::mV);
+    RB.spin(fwd, -speed_factor*1000, voltageUnits::mV);  
     delay(time-200);
     for (int i=100;i>=0;i--)
     {
-      LA.spin(fwd, 100*i, voltageUnits::mV);
-      LB.spin(fwd, 100*i, voltageUnits::mV);
-      RA.spin(fwd, -100*i, voltageUnits::mV);
-      RB.spin(fwd, -100*i, voltageUnits::mV); 
+      LA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, -speed_factor*10*i, voltageUnits::mV); 
     }
   }
   else
   {
     for (int i=0;i<=time/2;i++)
     {
-      LA.spin(fwd, 100*i, voltageUnits::mV);
-      LB.spin(fwd, 100*i, voltageUnits::mV);
-      RA.spin(fwd, -100*i, voltageUnits::mV);
-      RB.spin(fwd, -100*i, voltageUnits::mV); 
+      LA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, -speed_factor*10*i, voltageUnits::mV); 
     }
     for (int i=time/2;i>=0;i--)
     {
-      LA.spin(fwd, 100*i, voltageUnits::mV);
-      LB.spin(fwd, 100*i, voltageUnits::mV);
-      RA.spin(fwd, -100*i, voltageUnits::mV);
-      RB.spin(fwd, -100*i, voltageUnits::mV); 
+      LA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, speed_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, -speed_factor*10*i, voltageUnits::mV); 
     }
   }
   LA.spin(fwd, 0, voltageUnits::mV);
@@ -97,7 +101,7 @@ void mov_bwd(int time)
   RA.spin(fwd, 0, voltageUnits::mV);
   RB.spin(fwd, 0, voltageUnits::mV);  
 }
-void rot_lef(int time)
+void rotate_left(int time)
 {
   LA.spin(fwd, -10000, voltageUnits::mV);
   LB.spin(fwd, -10000, voltageUnits::mV);
@@ -114,12 +118,12 @@ void rot_lef(int time)
   RA.spin(fwd, 0, voltageUnits::mV);
   RB.spin(fwd, 0, voltageUnits::mV);  
 }
-void rot_rig(int time)
+void rotate_right(int time)
 {
-  LA.spin(fwd, 10000, voltageUnits::mV);
-  LB.spin(fwd, 10000, voltageUnits::mV);
-  RA.spin(fwd, 10000, voltageUnits::mV);
-  RB.spin(fwd, 10000, voltageUnits::mV);  
+  LA.spin(fwd, 15000, voltageUnits::mV);
+  LB.spin(fwd, 15000, voltageUnits::mV);
+  RA.spin(fwd, 15000, voltageUnits::mV);
+  RB.spin(fwd, 15000, voltageUnits::mV);  
   delay(time);
   LA.spin(fwd, -1000, voltageUnits::mV);
   LB.spin(fwd, -1000, voltageUnits::mV);
