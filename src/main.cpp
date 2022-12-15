@@ -12,12 +12,12 @@ void autonomous(void) {
   // 第一次前进长度还没确定
 
   mov_fwd(525);
-  rotate_left(371);
+  rotate_left(320);
   index(120);
   delay(3000);
   index(0);
   rotate_right(371);
-  mov_fwd(525);
+  mov_fwd(1725);
   rotate_left(454);
   index(120);
   delay(3000);
@@ -28,8 +28,7 @@ void autonomous(void) {
   mov_fwd(1200);
   intake(0);
   fwState = fw_OFF;
-  
-  
+
   //runAuton();
   //oneminute310p();
   // drift(50, 0, 1, 0.8);
@@ -86,19 +85,7 @@ void usercontrol(void) {
     vexDelay(10);
   }
 }
-void longpress()
-{
-  if(UP)
-  {
-    delay(2000);
-    if (UP)
-    {
-      extend(100);
-      delay(5000);
-    }
-  }
-  extend(0);
-}
+
 int main() {
   vexDelay(200);
   task GP1(positioning);

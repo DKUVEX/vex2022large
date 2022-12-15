@@ -37,7 +37,7 @@ void kick(int ktime){
     vexDelay(220);
   }  
 }
-int speed_factor = 5;
+int speed_factor = 6;
 void mov_fwd(int time)
 {
   if (time>=200) 
@@ -130,12 +130,13 @@ void mov_bwd(int time)
   RA.spin(fwd, 0, voltageUnits::mV);
   RB.spin(fwd, 0, voltageUnits::mV);  
 }
+double rotate_left_factor = 5.8;
 void rotate_left(int time)
 {
-  LA.spin(fwd, -10000, voltageUnits::mV);
-  LB.spin(fwd, -10000, voltageUnits::mV);
-  RA.spin(fwd, -10000, voltageUnits::mV);
-  RB.spin(fwd, -10000, voltageUnits::mV);  
+  LA.spin(fwd, -rotate_left_factor*1000, voltageUnits::mV);
+  LB.spin(fwd, -rotate_left_factor*1000, voltageUnits::mV);
+  RA.spin(fwd, -rotate_left_factor*1000, voltageUnits::mV);
+  RB.spin(fwd, -rotate_left_factor*1000, voltageUnits::mV);  
   delay(time);
   LA.spin(fwd, 1000, voltageUnits::mV);
   LB.spin(fwd, 1000, voltageUnits::mV);
@@ -147,12 +148,13 @@ void rotate_left(int time)
   RA.spin(fwd, 0, voltageUnits::mV);
   RB.spin(fwd, 0, voltageUnits::mV);  
 }
+double rotate_right_factor = 5.7;
 void rotate_right(int time)
 {
-  LA.spin(fwd, 15000, voltageUnits::mV);
-  LB.spin(fwd, 15000, voltageUnits::mV);
-  RA.spin(fwd, 15000, voltageUnits::mV);
-  RB.spin(fwd, 15000, voltageUnits::mV);  
+  LA.spin(fwd, rotate_right_factor*1000, voltageUnits::mV);
+  LB.spin(fwd, rotate_right_factor*1000, voltageUnits::mV);
+  RA.spin(fwd, rotate_right_factor*1000, voltageUnits::mV);
+  RB.spin(fwd, rotate_right_factor*1000, voltageUnits::mV);  
   delay(time);
   LA.spin(fwd, -1000, voltageUnits::mV);
   LB.spin(fwd, -1000, voltageUnits::mV);
@@ -347,7 +349,26 @@ int launch(){
   }
   return 0;
 }
+int longpress()
+{
+  while(1)
+  {
+    if(UP)
+    {
+      cout<<"here"<<endl;
+      delay(2000);
+      if (UP)
+      {
+        cout<<"here2"<<endl;
+        extend(-100);
+        delay(1000);
+      }
+    }
+    extend(0);
+  }
 
+  return 0;
+}
 
 
 #endif
