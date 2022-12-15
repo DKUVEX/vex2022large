@@ -5,11 +5,31 @@ using namespace std;
 
 void autonomous(void) {
   chState = ctrl_AUTONOMOUS;
+
   intake(100);
   fwState = fw_HSPD;
   //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
   // 第一次前进长度还没确定
 
+  mov_fwd(525);
+  rotate_left(371);
+  index(120);
+  delay(3000);
+  index(0);
+  rotate_right(371);
+  mov_fwd(525);
+  rotate_left(454);
+  index(120);
+  delay(3000);
+  index(0);
+  rotate_right(604);
+  mov_fwd(1000);
+  rotate_right(500);
+  mov_fwd(1200);
+  intake(0);
+  fwState = fw_OFF;
+  
+  
   //runAuton();
   //oneminute310p();
   // drift(50, 0, 1, 0.8);
