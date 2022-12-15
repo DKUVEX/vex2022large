@@ -5,13 +5,20 @@ using namespace std;
 
 void autonomous(void) {
   chState = ctrl_AUTONOMOUS;
+  intake(100);
+  fwState = fw_HSPD;
+  //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
+  // 第一次前进长度还没确定
+
   //runAuton();
   //oneminute310p();
   // drift(50, 0, 1, 0.8);
   // drift(-100, 0, 1, 0.8);
-  mov_fwd(1000);
-}
+  // mov_fwd(1000);
 
+}
+//gps 9、17
+//motor 16
 void usercontrol(void) {
   bool lastL1 = false;
   chState = ctrl_DEFAULT;
@@ -51,6 +58,7 @@ void usercontrol(void) {
     intake(-100*(R2-R1)*!L2);
     // cout<<R2<<" "<<R1<<endl;
     roller(100*BY);
+    // extend(100*UP);
     lastL1 = L1;
     // cout<<Hor.rotation(deg)<<"  "<<Ver.rotation(deg)<<endl;
     //printScreen(10,140,"x:%.2f y:%.2f v4gyro:%.2f v5gyro:%.2f",omniPos[0], omniPos[1], -v4gyro.rotation(),-Gyro.rotation());
@@ -58,7 +66,19 @@ void usercontrol(void) {
     vexDelay(10);
   }
 }
-
+void longpress()
+{
+  if(UP)
+  {
+    delay(2000);
+    if (UP)
+    {
+      extend(100);
+      delay(5000);
+    }
+  }
+  extend(0);
+}
 int main() {
   vexDelay(200);
   task GP1(positioning);
@@ -67,6 +87,7 @@ int main() {
   task BS(base);
   task FW(flywheelContorl);
   task LA(launch);
+  task LP(longpress);
 
   vexDelay(200);
   Competition.autonomous(autonomous);
