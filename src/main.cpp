@@ -6,23 +6,37 @@ using namespace std;
 void autonomous(void) {
   chState = ctrl_AUTONOMOUS;
 
-  intake(100);
+  intake(-100);
   fwState = fw_HSPD;
   //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
   // 第一次前进长度还没确定
 
-  mov_fwd(525);
-  rotate_left(320);
+  rotate_left(500);
+  roller(-100);//根据队伍调方向
+  delay(80);
+  roller(0);
+  mov_fwd(425);
+  rotate_left(40);
+  delay(2500);
   index(120);
+  intake(-100);
   delay(3000);
   index(0);
-  rotate_right(371);
-  mov_fwd(1725);
+  intake(100);
+  rotate_right(450);
+  // mov_fwd(1000);
+  crash();
+
+  delay(1000);
+  mov_fwd(1300);
   rotate_left(454);
+  delay(5000);
   index(120);
-  delay(3000);
+  intake(-100);
+  delay(5000);
   index(0);
-  rotate_right(604);
+  intake(100);
+  rotate_right(1000);
   mov_fwd(1000);
   rotate_right(500);
   mov_fwd(1200);
@@ -65,6 +79,7 @@ void usercontrol(void) {
       // cout<<"kcount "<<kCount<<endl;
       index(120);
       intake(-100);
+      cout<<"here"<<endl;
       vexDelay(100);
       if (kCount == 1)
       {

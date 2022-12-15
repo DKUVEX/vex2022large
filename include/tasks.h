@@ -37,6 +37,29 @@ void kick(int ktime){
     vexDelay(220);
   }  
 }
+// int crash_factor = 10;
+void crash()
+{
+  for (int i=0;i<=100;i++)
+    {
+      LA.spin(fwd, 100*i, voltageUnits::mV);
+      LB.spin(fwd, 100*i, voltageUnits::mV);
+      RA.spin(fwd, -100*i, voltageUnits::mV);
+      RB.spin(fwd, -100*i, voltageUnits::mV); 
+    }
+    LA.spin(fwd, 10000, voltageUnits::mV);
+    LB.spin(fwd, 10000, voltageUnits::mV);
+    RA.spin(fwd, -10000, voltageUnits::mV);
+    RB.spin(fwd, -10000, voltageUnits::mV);  
+    delay(500);
+    for (int i=25;i>=0;i--)
+    {
+      LA.spin(fwd, 400*i, voltageUnits::mV);
+      LB.spin(fwd, 400*i, voltageUnits::mV);
+      RA.spin(fwd, -400*i, voltageUnits::mV);
+      RB.spin(fwd, -400*i, voltageUnits::mV); 
+    }
+}
 int speed_factor = 6;
 void mov_fwd(int time)
 {
@@ -288,9 +311,11 @@ int flywheelContorl(){
         break;
       }
       case fw_HSPD:{
-        fwTargetSpeed = 2500; //2500
+        fwTargetSpeed = 2400; //2500
         cout<<fwSpeed<<endl;
-        ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+45);
+        
+        ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+110);
+        
         if(ifFwPID && fwSpeed < (fwTargetSpeed-30)) ifFwPID = false;
         else if(!ifFwPID && fwSpeed > (fwTargetSpeed-2)) ifFwPID = true;
         fwVolt = ifFwPID?((90)+(fwTargetSpeed-fwSpeed)*0.15):100;
@@ -355,11 +380,11 @@ int longpress()
   {
     if(UP)
     {
-      cout<<"here"<<endl;
+      // cout<<"here"<<endl;
       delay(2000);
       if (UP)
       {
-        cout<<"here2"<<endl;
+        // cout<<"here2"<<endl;
         extend(-100);
         delay(1000);
       }
