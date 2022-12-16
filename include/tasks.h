@@ -51,14 +51,16 @@ void crash()
     LB.spin(fwd, 10000, voltageUnits::mV);
     RA.spin(fwd, -10000, voltageUnits::mV);
     RB.spin(fwd, -10000, voltageUnits::mV);  
-    delay(500);
-    for (int i=25;i>=0;i--)
-    {
-      LA.spin(fwd, 400*i, voltageUnits::mV);
-      LB.spin(fwd, 400*i, voltageUnits::mV);
-      RA.spin(fwd, -400*i, voltageUnits::mV);
-      RB.spin(fwd, -400*i, voltageUnits::mV); 
-    }
+    delay(570);
+    LA.spin(fwd, -10000, voltageUnits::mV);
+    LB.spin(fwd, -10000, voltageUnits::mV);
+    RA.spin(fwd, 10000, voltageUnits::mV);
+    RB.spin(fwd, 10000, voltageUnits::mV);  
+    delay(100);
+    LA.spin(fwd, 0, voltageUnits::mV);
+    LB.spin(fwd, 0, voltageUnits::mV);
+    RA.spin(fwd, 0, voltageUnits::mV);
+    RB.spin(fwd, 0, voltageUnits::mV);  
 }
 int speed_factor = 6;
 void mov_fwd(int time)
@@ -107,45 +109,46 @@ void mov_fwd(int time)
   RA.spin(fwd, 0, voltageUnits::mV);
   RB.spin(fwd, 0, voltageUnits::mV);  
 }
+int back_factor = 6;
 void mov_bwd(int time)
 {
   if (time>=200) 
   {
     for (int i=0;i<=100;i++)
     {
-      LA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      LB.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      RA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
-      RB.spin(fwd, speed_factor*10*i, voltageUnits::mV); 
+      LA.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, back_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, back_factor*10*i, voltageUnits::mV); 
     }
-    LA.spin(fwd, -speed_factor*1000, voltageUnits::mV);
-    LB.spin(fwd, -speed_factor*1000, voltageUnits::mV);
-    RA.spin(fwd, speed_factor*1000, voltageUnits::mV);
-    RB.spin(fwd, speed_factor*1000, voltageUnits::mV);  
+    LA.spin(fwd, -back_factor*1000, voltageUnits::mV);
+    LB.spin(fwd, -back_factor*1000, voltageUnits::mV);
+    RA.spin(fwd, back_factor*1000, voltageUnits::mV);
+    RB.spin(fwd, back_factor*1000, voltageUnits::mV);  
     delay(time-200);
     for (int i=100;i>=0;i--)
     {
-      LA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      LB.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      RA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
-      RB.spin(fwd, speed_factor*10*i, voltageUnits::mV); 
+      LA.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, back_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, back_factor*10*i, voltageUnits::mV); 
     }
   }
   else
   {
     for (int i=0;i<=time/2;i++)
     {
-      LA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      LB.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      RA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
-      RB.spin(fwd, speed_factor*10*i, voltageUnits::mV); 
+      LA.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, back_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, back_factor*10*i, voltageUnits::mV); 
     }
     for (int i=time/2;i>=0;i--)
     {
-      LA.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      LB.spin(fwd, -speed_factor*10*i, voltageUnits::mV);
-      RA.spin(fwd, speed_factor*10*i, voltageUnits::mV);
-      RB.spin(fwd, speed_factor*10*i, voltageUnits::mV); 
+      LA.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      LB.spin(fwd, -back_factor*10*i, voltageUnits::mV);
+      RA.spin(fwd, back_factor*10*i, voltageUnits::mV);
+      RB.spin(fwd, back_factor*10*i, voltageUnits::mV); 
     }
   }
   LA.spin(fwd, 0, voltageUnits::mV);
@@ -311,7 +314,7 @@ int flywheelContorl(){
         break;
       }
       case fw_HSPD:{
-        fwTargetSpeed = 2400; //2500
+        fwTargetSpeed = 2450; //2500
         cout<<fwSpeed<<endl;
         
         ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+110);

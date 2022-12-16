@@ -6,24 +6,29 @@ using namespace std;
 void autonomous(void) {
   chState = ctrl_AUTONOMOUS;
 
+
   intake(-100);
   fwState = fw_HSPD;
   //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
   // 第一次前进长度还没确定
-
-  rotate_left(500);
-  roller(-100);//根据队伍调方向
-  delay(80);
+  delay(10000);
+  rotate_left(200);
+  mov_bwd(300);
+  roller(-100);
+  delay(90);
   roller(0);
-  mov_fwd(425);
-  rotate_left(40);
+  rotate_right(200);
+  
+  mov_fwd(400);
+  rotate_left(285);
   delay(2500);
   index(120);
   intake(-100);
   delay(3000);
   index(0);
   intake(100);
-  rotate_right(450);
+
+  rotate_right(430);
   // mov_fwd(1000);
   crash();
 
@@ -92,6 +97,7 @@ void usercontrol(void) {
     intake(-100*(R2-R1)*!L2);
     // cout<<R2<<" "<<R1<<endl;
     roller(100*BY);
+    index(-100*DOWN);
     // extend(100*UP);
     lastL1 = L1;
     // cout<<Hor.rotation(deg)<<"  "<<Ver.rotation(deg)<<endl;
