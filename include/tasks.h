@@ -51,7 +51,7 @@ void crash()
     LB.spin(fwd, 10000, voltageUnits::mV);
     RA.spin(fwd, -10000, voltageUnits::mV);
     RB.spin(fwd, -10000, voltageUnits::mV);  
-    delay(570);
+    delay(590);
     LA.spin(fwd, -10000, voltageUnits::mV);
     LB.spin(fwd, -10000, voltageUnits::mV);
     RA.spin(fwd, 10000, voltageUnits::mV);
@@ -62,8 +62,8 @@ void crash()
     RA.spin(fwd, 0, voltageUnits::mV);
     RB.spin(fwd, 0, voltageUnits::mV);  
 }
-int speed_factor = 6;
-void mov_fwd(int time)
+
+void mov_fwd(int time, int speed_factor = 6)
 {
   if (time>=200) 
   {
@@ -221,15 +221,20 @@ int base(){
       case ctrl_DEFAULT:{
         LA.spin(fwd, 100*(Ch1+Ch3), voltageUnits::mV);
         LB.spin(fwd, 100*(Ch1+Ch3), voltageUnits::mV);
+        LBB.spin(fwd, 100*(Ch1+Ch3), voltageUnits::mV);
         RA.spin(fwd, 100*(Ch1-Ch3), voltageUnits::mV);
         RB.spin(fwd, 100*(Ch1-Ch3), voltageUnits::mV);
+        RBB.spin(fwd, 100*(Ch1-Ch3), voltageUnits::mV);
         break;
       }
       case ctrl_MANUAL1:{
         LA.spin(fwd, 100*(Ch1+Ch3+Ch4), voltageUnits::mV);
         LB.spin(fwd, 100*(Ch1+Ch3-Ch4), voltageUnits::mV);
+        // LBB.spin(fwd, 100*(Ch1+Ch3-Ch4), voltageUnits::mV);
+        
         RA.spin(fwd, 100*(Ch1-Ch3+Ch4), voltageUnits::mV);
         RB.spin(fwd, 100*(Ch1-Ch3-Ch4), voltageUnits::mV);
+        // RBB.spin(fwd, 100*(Ch1-Ch3-Ch4), voltageUnits::mV);
         break;
       }
       case ctrl_MANUAL2:{
@@ -314,7 +319,7 @@ int flywheelContorl(){
         break;
       }
       case fw_HSPD:{
-        fwTargetSpeed = 2450; //2500
+        fwTargetSpeed = 2570; //2500
         cout<<fwSpeed<<endl;
         
         ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+110);

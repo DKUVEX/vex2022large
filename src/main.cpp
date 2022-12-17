@@ -11,7 +11,7 @@ void autonomous(void) {
   fwState = fw_HSPD;
   //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
   // 第一次前进长度还没确定
-  delay(10000);
+  // delay(10000);
   rotate_left(200);
   mov_bwd(300);
   roller(-100);
@@ -20,7 +20,7 @@ void autonomous(void) {
   rotate_right(200);
   
   mov_fwd(400);
-  rotate_left(285);
+  rotate_left(269);
   delay(2500);
   index(120);
   intake(-100);
@@ -28,14 +28,14 @@ void autonomous(void) {
   index(0);
   intake(100);
 
-  rotate_right(430);
+  rotate_right(425);
   // mov_fwd(1000);
   crash();
 
   delay(1000);
-  mov_fwd(1300);
-  rotate_left(454);
-  delay(5000);
+  mov_fwd(1500, 3);
+  rotate_left(484);
+  delay(8000);
   index(120);
   intake(-100);
   delay(5000);
@@ -96,9 +96,10 @@ void usercontrol(void) {
     }
     intake(-100*(R2-R1)*!L2);
     // cout<<R2<<" "<<R1<<endl;
-    roller(100*BY);
+    roller(100*(BY-RIGHT));
+    // roller(-100*RIGHT);
     index(-100*DOWN);
-    // extend(100*UP);
+    extend(100*UP);
     lastL1 = L1;
     // cout<<Hor.rotation(deg)<<"  "<<Ver.rotation(deg)<<endl;
     //printScreen(10,140,"x:%.2f y:%.2f v4gyro:%.2f v5gyro:%.2f",omniPos[0], omniPos[1], -v4gyro.rotation(),-Gyro.rotation());

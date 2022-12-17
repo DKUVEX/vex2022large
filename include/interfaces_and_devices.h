@@ -25,6 +25,11 @@ motor LB = motor(PORT14, ratio18_1, 1);
 motor RA = motor(PORT2, ratio18_1, 0); 
 motor RB = motor(PORT3,  ratio18_1, 1);
 
+
+motor LBB = motor(PORT16, ratio18_1, 0); 
+motor RBB = motor(PORT7,  ratio18_1, 0);
+
+
 motor fw1 = motor(PORT18,  ratio6_1, true); 
 motor fw2 = motor(PORT19,  ratio6_1, true);
 
