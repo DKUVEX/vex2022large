@@ -12,15 +12,15 @@ void autonomous(void) {
   //测试直到小车一秒走1块 左转一秒180度 右转1秒180度
   // 第一次前进长度还没确定
   // delay(10000);
-  rotate_left(200);
+  rotate_left(210);
   mov_bwd(300);
   roller(-100);
-  delay(90);
+  delay(100);
   roller(0);
-  rotate_right(200);
+  rotate_right(210);
   
   mov_fwd(400);
-  rotate_left(269);
+  rotate_left(375);
   delay(2500);
   index(120);
   intake(-100);
@@ -28,7 +28,7 @@ void autonomous(void) {
   index(0);
   intake(100);
 
-  rotate_right(425);
+  rotate_right(400);
   // mov_fwd(1000);
   crash();
 

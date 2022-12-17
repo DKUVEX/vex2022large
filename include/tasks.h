@@ -51,7 +51,7 @@ void crash()
     LB.spin(fwd, 10000, voltageUnits::mV);
     RA.spin(fwd, -10000, voltageUnits::mV);
     RB.spin(fwd, -10000, voltageUnits::mV);  
-    delay(590);
+    delay(700);
     LA.spin(fwd, -10000, voltageUnits::mV);
     LB.spin(fwd, -10000, voltageUnits::mV);
     RA.spin(fwd, 10000, voltageUnits::mV);
@@ -319,7 +319,7 @@ int flywheelContorl(){
         break;
       }
       case fw_HSPD:{
-        fwTargetSpeed = 2570; //2500
+        fwTargetSpeed = 2600; //2500
         cout<<fwSpeed<<endl;
         
         ifSpeedOK = fwSpeed > (fwTargetSpeed-5) && fwSpeed < (fwTargetSpeed+110);
